@@ -1,0 +1,12 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Live License Plate Recognition</title>
+</head>
+<body>
+  <h1>Live Camera Stream</h1>
+  <!-- The image tag's source is the video_feed route which streams the MJPEG video -->
+  <img src="{{ url_for('video_feed') }}" width="100%">
+</body>
+</html>
