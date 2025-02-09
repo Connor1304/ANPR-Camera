@@ -1,0 +1,25 @@
+[tool.poetry]
+name = "anpr-camera"
+version = "0.1.0"
+description = ""
+authors = ["Connor Walters <connor.w13304@outlook.com>"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.13"
+opencv-python = "^4.11.0.86"
+imutils = "^0.5.4"
+easyocr = "^1.7.2"
+opencv-contrib-python = "^4.11.0.86"
+yolov5 = "^7.0.14"
+transformers = "^4.48.3"
+tiktoken = "^0.8.0"
+verovio = "^5.0.0"
+accelerate = "^0.26.0"
+torch = "^2.0.1"
+diffusers = "^0.32.2"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
