@@ -1,5 +1,8 @@
 import yolov5
 import cv2
+import easyocr
+
+easyocr_reader = easyocr.Reader(['en'])
 
 # load model
 model = yolov5.load('keremberke/yolov5m-license-plate')
@@ -14,7 +17,6 @@ model.max_det = 1000  # maximum number of detections per image
 # set image
 img = 'number_plates/e0d69514813945b9bac22c02212fafbd.jpg'
 img = cv2.imread(img)
-img.setflags(write=1)
 
 # perform inference
 results = model(img, size=640)
@@ -29,14 +31,16 @@ scores = predictions[:, 4]
 categories = predictions[:, 5]
 
 # cropds the image to just the numberplate
+print(f'Found {len(boxes)} numberplates')
 for i in range(len(boxes)):
-    print(f'Found {len(boxes)} numberplates')
+    
     x1, y1, x2, y2 = boxes[i]
     numberplate = img[int(y1):int(y2), int(x1):int(x2)]
-    cv2.imshow('Numberplate', numberplate)
+    
+    print(easyocr_reader.readtext(numberplate, detail=0))
+
     # saves the image
     cv2.imwrite(f'number_plates/numberplate_{i}.jpg', numberplate)
-    cv2.waitKey(0)
 
 
 # # show detection bounding boxes on image
